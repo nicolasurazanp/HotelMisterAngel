@@ -1,0 +1,27 @@
+/* src/styles/HomePage.css */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    text-align: center;
+  }
+  
+  .home-container h1 {
+    font-size: 3rem;
+    color: #333;
+  }
+  
+  .home-container p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 1rem;
+  }
+  
