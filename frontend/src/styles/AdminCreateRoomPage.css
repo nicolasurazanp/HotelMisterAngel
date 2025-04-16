@@ -1,0 +1,94 @@
+/* AdminCreateRoomPage.css */
+
+.admin-create-room-page {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-create-room-page h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input, textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  textarea {
+    height: 120px;
+    resize: none;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button[type="button"] {
+    background-color: #28a745;
+    margin-top: 10px;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #218838;
+  }
+  
+  div > label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  div > input {
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"]::placeholder, input[type="number"]::placeholder {
+    color: #888;
+  }
+  
+  input[type="checkbox"] {
+    width: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-create-room-page {
+      margin: 20px;
+      padding: 15px;
+    }
+  
+    input, textarea, button {
+      font-size: 14px;
+    }
+  }
+  

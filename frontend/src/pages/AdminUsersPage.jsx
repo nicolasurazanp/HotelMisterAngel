@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import '../styles/AdminUsersPage.css';
 import { useNavigate } from 'react-router-dom';
 
-
 const AdminUsersPage = () => {
   const [users, setUsers] = useState([]);
   const [editingUserId, setEditingUserId] = useState(null);
   const [editedUser, setEditedUser] = useState({ nombre: '', telefono: '', email: '', rol: '' });
   const navigate = useNavigate();
-
 
   const token = localStorage.getItem('token');
 
@@ -17,13 +15,13 @@ const AdminUsersPage = () => {
       const res = await fetch('http://localhost:5000/api/admin/users', {
         headers: { Authorization: token },
       });
-  
+
       if (res.status === 401 || res.status === 403) {
         // Token inválido o sin permisos
         navigate('/');
         return;
       }
-  
+
       const data = await res.json();
       if (Array.isArray(data)) {
         setUsers(data);
@@ -74,6 +72,7 @@ const AdminUsersPage = () => {
 
   return (
     <div className="admin-users-page">
+      <button onClick={() => navigate('/')} className="back-button">🏠 Volver al Home</button>
       <h2>Lista de Usuarios</h2>
       <table>
         <thead>
