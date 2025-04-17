@@ -11,7 +11,6 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} /> {/* Ya no está protegida */}
-
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
