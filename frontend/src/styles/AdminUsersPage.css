@@ -1,42 +1,156 @@
+/* Estilo general de la página de usuarios */
 .admin-users-page {
-    padding: 2rem;
-    background-color: #fff;
-    min-height: 100vh;
-  }
-  
-  .admin-users-page h2 {
-    margin-bottom: 1rem;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  input, select {
-    width: 100%;
-    padding: 0.4rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    margin-right: 0.5rem;
-    padding: 0.4rem 0.8rem;
-    border: none;
-    background-color: #d22;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #a00;
-  }
-  
+  padding: 2rem;
+  background-color: #f4f7fa;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Título de la sección */
+.admin-users-page h2 {
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  border-bottom: 3px solid #4CAF50;
+  padding-bottom: 10px;
+}
+
+/* Estilo de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Encabezados de las columnas */
+th {
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  text-align: center;
+}
+
+/* Celdas de la tabla */
+th, td {
+  padding: 16px;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Efecto hover en las filas de la tabla */
+tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo para los inputs y selects */
+input, select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Estilo de los inputs y selects al estar en foco */
+input:focus, select:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Estilo de los botones */
+button {
+  padding: 0.6rem 1.3rem;
+  background-color: #d22;
+  color: white;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Efecto hover y animación de los botones */
+button:hover {
+  background-color: #a00;
+  transform: scale(1.05); /* Efecto de escala */
+}
+
+/* Cambio de color al hacer clic en el botón */
+button:active {
+  background-color: #8c0000;
+  transform: scale(0.98);
+}
+
+/* Añadir borde cuando el botón está en foco */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+/* Estilo de las filas de la tabla */
+td {
+  padding: 12px;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Estilo general de la fila cuando los datos están vacíos o son nulos */
+td.empty {
+  color: #bbb;
+  font-style: italic;
+}
+
+/* Estilo general de la tabla de datos */
+table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Animación para botones de acción */
+button {
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+/* Mejoras de espaciado en los campos y botones */
+input, select, button {
+  margin-bottom: 1rem;
+}
+
+/* Cambios de color de los textos y botones para mejorar visibilidad */
+input::placeholder, select::placeholder {
+  color: #bbb;
+}
+
+input:focus::placeholder, select:focus::placeholder {
+  color: #4CAF50;
+}

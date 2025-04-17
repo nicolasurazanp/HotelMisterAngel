@@ -1,41 +1,126 @@
+/* Estilo general de la página */
 .admin-rooms-page {
-    padding: 20px;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa; /* Fondo suave */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo del botón para crear una habitación */
+.create-room-button {
+  margin-bottom: 30px;
+  padding: 12px 30px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-room-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Efecto de sombra al hacer hover */
+}
+
+/* Estilo para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de las celdas de la tabla (th y td) */
+th, td {
+  padding: 16px;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 400;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilo de los encabezados de las columnas */
+th {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Hover en las filas de la tabla */
+tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo de los botones dentro de la tabla (editar y eliminar) */
+button {
+  padding: 6px 12px;
+  background-color: #f44336;
+  color: white;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+button:hover {
+  background-color: #e53935;
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+button:focus, button:active {
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+}
+
+/* Estilo de las celdas vacías o de "no disponible" */
+td.empty {
+  color: #bbb;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Diseño responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .admin-rooms-page {
+    padding: 1.5rem;
   }
-  
+
   .create-room-button {
-    margin-bottom: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+    font-size: 1rem;
   }
-  
-  .create-room-button:hover {
-    background-color: #45a049;
-  }
-  
+
   table {
     width: 100%;
-    border-collapse: collapse;
+    margin-top: 15px;
   }
-  
+
   th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    font-size: 0.95rem;
   }
-  
+
   button {
-    margin: 0 5px;
     padding: 5px 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    cursor: pointer;
+    font-size: 0.85rem;
   }
-  
-  button:hover {
-    background-color: #e53935;
-  }
-  
+}

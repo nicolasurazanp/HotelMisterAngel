@@ -43,12 +43,12 @@ const HomePage = () => {
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false, // Cambié a false para evitar la repetición infinita
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     arrows: false,
   };
 
@@ -75,7 +75,7 @@ const HomePage = () => {
                 {habitacion.imagenes?.length > 0 ? (
                   <Slider {...settings}>
                     {habitacion.imagenes.map((img, idx) => (
-                      <div key={idx}>
+                      <div key={`${habitacion._id}-${idx}`}>
                         <img src={img} alt={`Imagen ${idx + 1}`} className="carousel-image" />
                       </div>
                     ))}
@@ -85,10 +85,10 @@ const HomePage = () => {
                 )}
                 <h3>{habitacion.nombre}</h3>
                 <p>{habitacion.descripcion}</p>
-                <p><strong>💰 ${habitacion.precioPorNoche}</strong></p>
-                <p>👥 Capacidad: {habitacion.capacidad}</p>
+                <p><strong>${habitacion.precioPorNoche}</strong></p>
+                <p>Capacidad: {habitacion.capacidad}</p>
                 <p className={habitacion.disponibilidad ? 'disponible' : 'ocupada'}>
-                  {habitacion.disponibilidad ? '✅ Disponible' : '❌ Ocupada'}
+                  {habitacion.disponibilidad ? 'Disponible' : 'Ocupada'}
                 </p>
                 <button className="btn" onClick={() => {
                   if (!isAuthenticated) navigate('/login');

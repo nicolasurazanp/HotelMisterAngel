@@ -19,13 +19,14 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 2rem 3rem;
-    background-color: transparent;
+    background-color: transparent; /* Fondo inicial transparente */
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-.navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.7); 
-    backdrop-filter: blur(5px);
+.navbar:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con 70% de opacidad */
+    backdrop-filter: blur(5px); /* Filtro de desenfoque */
+
 }
 
 .logo {
@@ -41,7 +42,6 @@ body {
     list-style: none;
     display: flex;
     gap: 3rem;
-    margin-left: 38rem;
 }
 
 .nav-links li {
@@ -77,7 +77,7 @@ body {
 }
 
 .language-switcher {
-    margin-left: auto; 
+    margin-left: auto;
 }
 
 .auth-btn {
