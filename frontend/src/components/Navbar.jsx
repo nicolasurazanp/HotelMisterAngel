@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
 import '../styles/Navbar.css';
 import "semantic-ui-css/semantic.min.css";
 
@@ -15,27 +14,10 @@ const Navbar = ({ isAuthenticated, onAuthClick }) => {
         <li onClick={() => navigate('/habitaciones')}>Habitaciones</li>
         <li onClick={() => navigate('/reservas')}>Reservas</li>
         <li onClick={() => navigate('/usuarios')}>Usuarios</li>
+        <li className="auth-btn" onClick={onAuthClick}>
+          {isAuthenticated ? 'Cerrar Sesión' : 'Iniciar Sesión'}
+        </li>
       </ul>
-      
-      {isAuthenticated ? (
-        <Button 
-          animated="vertical" 
-          onClick={onAuthClick}
-          className="auth-btn-animated"
-        >
-          <Button.Content hidden>Cerrar Sesión</Button.Content>
-          <Button.Content visible>
-            <i className="sign out icon"></i>
-          </Button.Content>
-        </Button>
-      ) : (
-        <button 
-          className="auth-btn" 
-          onClick={onAuthClick}
-        >
-          Iniciar Sesión
-        </button>
-      )}
     </nav>
   );
 };
