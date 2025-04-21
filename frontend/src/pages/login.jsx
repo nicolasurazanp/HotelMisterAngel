@@ -34,11 +34,18 @@ const Login = () => {
       const result = await res.json();
 
       if (res.ok) {
-        // Aquí estamos asegurándonos de que el token se almacene correctamente
-        localStorage.setItem('token', result.token); // Guardar token en localStorage
-        navigate('/'); // Redirigir a la página principal después del login
+        // Guardar token y usuario (con rol) en localStorage
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('user', JSON.stringify(result.user));
+
+        // Redirigir a home o a una vista especial si es admin
+        if (result.user.rol === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/');
+        }
       } else {
-        setError(result.msg); // Mostrar error si ocurre
+        setError(result.msg);
       }
     } catch (err) {
       console.error(err);

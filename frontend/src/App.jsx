@@ -3,16 +3,26 @@ import Login from './pages/login';
 import Register from './pages/register';
 import HomePage from './pages/HomePage';
 import AdminUsersPage from './pages/AdminUsersPage';
-import ProtectedRoute from './routes/ProtectedRoute';
 import AdminCreateRoomPage from './pages/AdminCreateRoomPage';
 import AdminRoomsPage from './pages/AdminRoomsPage';
+import AdminDashboardPage from './pages/adminDashboardPage';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} /> {/* Ya no está protegida */}
+      <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminDashboardPage />
+          </ProtectedRoute>
+        }
+      />
 
       <Route
         path="/admin/users"
@@ -23,13 +33,13 @@ const App = () => {
         }
       />
 
-      <Route 
-        path="/admin/habitaciones" 
+      <Route
+        path="/admin/habitaciones"
         element={
           <ProtectedRoute>
             <AdminRoomsPage />
           </ProtectedRoute>
-        } 
+        }
       />
 
       <Route
