@@ -7,6 +7,8 @@ import AdminCreateRoomPage from './pages/AdminCreateRoomPage';
 import AdminRoomsPage from './pages/AdminRoomsPage';
 import AdminDashboardPage from './pages/adminDashboardPage';
 import ProtectedRoute from './routes/ProtectedRoute';
+import ReservaPage from './pages/ReservaPage'
+import ReservasAdminPage from './pages/ReservasAdminPage';
 
 const App = () => {
   return (
@@ -14,6 +16,8 @@ const App = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/reservar/:id" element={<ReservaPage />} />
+      <Route path="/admin/reservas" element={<ReservasAdminPage />} />
 
       <Route
         path="/admin"

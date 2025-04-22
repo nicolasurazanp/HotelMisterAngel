@@ -90,10 +90,16 @@ const HomePage = () => {
                 <p className={habitacion.disponibilidad ? 'disponible' : 'ocupada'}>
                   {habitacion.disponibilidad ? 'Disponible' : 'Ocupada'}
                 </p>
-                <button className="btn" onClick={() => {
-                  if (!isAuthenticated) navigate('/login');
-                  else console.log("Reserva hecha para", habitacion.nombre);
-                }}>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    if (!isAuthenticated) {
+                      navigate('/login');
+                    } else {
+                      navigate(`/reservar/${habitacion._id}`);
+                    }
+                  }}
+                >
                   {isAuthenticated ? 'Reservar' : 'Iniciar sesión para reservar'}
                 </button>
               </div>

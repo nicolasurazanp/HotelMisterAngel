@@ -2,20 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+
+// Rutas
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const publicRoutes = require('./routes/publicRoutes');
+const habitacionesRoutes = require('./routes/habitaciones');
+const reservasRoutes = require('./routes/reservas');  // <- Solo una importación
 
-dotenv.config(); // <- ESTO PRIMERO
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
-
-if (!MONGO_URI) {
-  console.error('❌ MONGO_URI no está definida en el archivo .env');
-  process.exit(1);
-}
 
 // Middlewares
 app.use(cors());
@@ -25,6 +24,8 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api', publicRoutes);
+app.use('/api/habitaciones', habitacionesRoutes);
+app.use('/api/reservas', reservasRoutes);  // <- Solo un registro de ruta
 
 // Conexión
 mongoose.connect(MONGO_URI)
@@ -35,4 +36,3 @@ mongoose.connect(MONGO_URI)
   .catch(err => {
     console.error('❌ Error al conectar a MongoDB:', err.message);
   });
-

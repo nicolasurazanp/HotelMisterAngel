@@ -11,6 +11,7 @@ const AdminDashboardPage = () => {
         <li><Link to="/admin/users">👥 Gestión de Usuarios</Link></li>
         <li><Link to="/admin/habitaciones">🛏️ Ver Habitaciones</Link></li>
         <li><Link to="/admin/habitaciones/crear">➕ Crear Nueva Habitación</Link></li>
+        <li><Link to="/admin/reservas">📋 Ver Reservas</Link></li>
       </ul>
     </div>
   );

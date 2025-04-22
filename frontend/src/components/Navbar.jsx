@@ -14,7 +14,7 @@ const Navbar = ({ onAuthClick }) => {
   const handleAuthClick = () => {
     if (isAuthenticated) {
       localStorage.removeItem('user');
-      window.location.reload(); // O usa un estado global si no quieres recargar
+      window.location.reload();
     } else {
       navigate('/login');
     }
@@ -26,13 +26,13 @@ const Navbar = ({ onAuthClick }) => {
       <ul className="nav-links">
         <li onClick={() => navigate('/')}>Inicio</li>
         <li onClick={() => navigate('/habitaciones')}>Habitaciones</li>
-        <li onClick={() => navigate('/reservas')}>Reservas</li>
 
         {/* Secciones visibles solo si el usuario es admin */}
         {isAuthenticated && isAdmin && (
           <>
             <li onClick={() => navigate('/admin/habitaciones')}>Habitaciones (admin)</li>
             <li onClick={() => navigate('/admin/usuarios')}>Usuarios (admin)</li>
+            <li onClick={() => navigate('/admin/reservas')}>Reservas (admin)</li>
           </>
         )}
 
