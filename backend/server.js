@@ -7,8 +7,8 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const publicRoutes = require('./routes/publicRoutes');
-const habitacionesRoutes = require('./routes/habitaciones');
-const reservasRoutes = require('./routes/reservas');  // <- Solo una importación
+const habitacionesRoutes = require('./routes/habitacionesRoutes');
+const reservasRoutes = require('./routes/reservasRoutes');  // <- Solo una importación
 
 dotenv.config();
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import '../styles/Footer.css';
 import { FaX } from 'react-icons/fa6';
+import { Link } from 'react-router-dom'; // Agrega esto
 
 const Footer = () => (
   <footer className="footer">
@@ -21,10 +22,10 @@ const Footer = () => (
       <div className="footer-section links">
         <h3>Enlaces útiles</h3>
         <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Habitaciones</a></li>
-          <li><a href="#">Reservas</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li><Link to="/">inicio</Link></li>
+          <li><Link to="/habitaciones">Habitaciones</Link></li>
+          <li><Link to="/contacto">Contacto</Link></li> 
+          <li><Link to="/preguntas-frecuentes">Preguntas frecuentes</Link></li>
         </ul>
       </div>
 

@@ -37,13 +37,9 @@ const Login = () => {
         // Guardar token y usuario (con rol) en localStorage
         localStorage.setItem('token', result.token);
         localStorage.setItem('user', JSON.stringify(result.user));
-
+        navigate('/'); // Redirigir a home
         // Redirigir a home o a una vista especial si es admin
-        if (result.user.rol === 'admin') {
-          navigate('/admin');
-        } else {
-          navigate('/');
-        }
+        
       } else {
         setError(result.msg);
       }
@@ -77,7 +73,6 @@ const Login = () => {
             onChange={handleChange}
           />
           <button type="submit">Entrar</button>
-          <p>¿No tienes cuenta? <Link to="/register">Regístrate</Link></p>
         </form>
       </div>
     </>

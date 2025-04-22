@@ -1,126 +1,131 @@
 /* Estilo general de la página */
 .admin-rooms-page {
-  padding: 2rem;
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f7fa; /* Fondo suave */
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Estilo del botón para crear una habitación */
+/* Botón para crear una habitación */
 .create-room-button {
-  margin-bottom: 30px;
-  padding: 12px 30px;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1.1rem;
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px 28px;
+  font-size: 16px;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
 .create-room-button:hover {
-  background-color: #45a049;
-  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Efecto de sombra al hacer hover */
+  background-color: #218838;
+  transform: scale(1.05);
 }
 
-/* Estilo para la tabla */
+/* Tabla */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  background-color: white;
-  border-radius: 10px;
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilo de las celdas de la tabla (th y td) */
 th, td {
   padding: 16px;
   text-align: left;
-  font-size: 1rem;
-  color: #333;
-  font-weight: 400;
-  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
 }
 
-/* Estilo de los encabezados de las columnas */
 th {
-  background-color: #4CAF50;
+  background-color: #28a745;
   color: white;
-  font-weight: 600;
   text-transform: uppercase;
+  font-size: 14px;
   letter-spacing: 0.5px;
 }
 
-/* Hover en las filas de la tabla */
 tr:hover {
-  background-color: #f9f9f9;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: #f8f9fa;
 }
 
-/* Estilo de los botones dentro de la tabla (editar y eliminar) */
+/* Botones dentro de la tabla */
 button {
-  padding: 6px 12px;
-  background-color: #f44336;
-  color: white;
-  font-size: 0.95rem;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   margin-right: 8px;
 }
 
-button:hover {
-  background-color: #e53935;
-  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+/* Botón eliminar */
+button.delete {
+  background-color: #dc3545;
+  color: white;
 }
 
-button:focus, button:active {
-  outline: none;
-  box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+button.delete:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
 }
 
-/* Estilo de las celdas vacías o de "no disponible" */
+/* Botón editar */
+button.edit {
+  background-color: #007bff;
+  color: white;
+}
+
+button.edit:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Celdas vacías */
 td.empty {
-  color: #bbb;
+  color: #aaa;
   font-style: italic;
   text-align: center;
 }
 
-/* Diseño responsivo para pantallas pequeñas */
+/* Responsive */
 @media (max-width: 768px) {
   .admin-rooms-page {
-    padding: 1.5rem;
+    margin: 20px;
+    padding: 20px;
   }
 
   .create-room-button {
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 15px;
   }
 
   table {
-    width: 100%;
-    margin-top: 15px;
+    font-size: 14px;
   }
 
   th, td {
     padding: 12px;
-    font-size: 0.95rem;
   }
 
   button {
-    padding: 5px 10px;
-    font-size: 0.85rem;
+    padding: 6px 10px;
+    font-size: 13px;
   }
 }

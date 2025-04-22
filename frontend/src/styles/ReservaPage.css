@@ -1,95 +1,257 @@
-/* ReservaPage.css */
+.reserva-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 .reserva-container {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .reserva-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .reserva-header h2 {
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  .room-preview {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .room-preview img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .room-preview p {
-    color: #555;
-    font-size: 1.1rem;
-  }
-  
-  .reserva-form {
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 70px;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.habitacion-details {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.habitacion-details:hover {
+  transform: translateY(-5px);
+}
+
+.habitacion-details img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.habitacion-details p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.precio-noche {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #2a9d8f;
+  font-weight: 600;
+}
+
+
+.form-container {
+  flex: 1;
+  min-width: 350px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-5px);
+}
+
+.form-container form input,
+.form-container form button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-container form input:focus,
+.form-container form button:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+.form-container form button {
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.form-container form button:hover {
+  background-color: #218838;
+}
+
+.indicador-fechas-ocupadas {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.fecha-ocupada {
+  background-color: #f44336;
+  color: white;
+  border-radius: 8px;
+}
+
+.react-calendar {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+  flex-grow: 1; /* Esto permite que el calendario ocupe más espacio */
+}
+
+.react-calendar:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  text-align: center;
+}
+
+.react-calendar__navigation button {
+  background: none;
+  border: none;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 6px 12px;
+  transition: background 0.2s ease;
+}
+
+.react-calendar__navigation button:hover {
+  background: #f0f0f0;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.react-calendar__tile {
+  border-radius: 12px;
+  padding: 12px 0;
+  background: none;
+  font-size: 1rem;
+  color: #333;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.react-calendar__tile:hover {
+  background: #f5f5f5;
+  transform: scale(1.02);
+}
+
+.react-calendar__tile--now {
+  background: #eafaf1;
+  border: 1px solid #28a745;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.react-calendar__tile--active {
+  background: #28a745 !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.react-calendar__tile--rangeStart,
+.react-calendar__tile--rangeEnd {
+  background: #218838 !important;
+  color: #fff !important;
+}
+
+.react-calendar__tile--range {
+  background: #c3e6cb !important;
+  color: #155724 !important;
+}
+
+.react-calendar__tile--occupied {
+  background: #f44336 !important;
+  color: white !important;
+  pointer-events: none; /* Deshabilita la selección de las fechas ocupadas */
+  opacity: 0.6;
+}
+.fecha-ocupada {
+  background-color: #f44336 !important;
+  color: white !important;
+  pointer-events: none; /* Deshabilita la selección de las fechas ocupadas */
+  opacity: 0.6; /* Hace que las fechas ocupadas se vean atenuadas */
+}
+
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #bbb;
+  background-color: transparent !important;
+  font-style: italic;
+  opacity: 0.6;
+  cursor: default;
+  border-radius: 12px;
+}
+
+
+.react-calendar__month-view__days__day:not(.react-calendar__month-view__days__day--neighboringMonth) {
+  color: #2c3e50;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.react-calendar__month-view__days__day:not(.react-calendar__month-view__days__day--neighboringMonth):hover {
+  background-color: #f0fdf4;
+  border: 1px solid #28a745;
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .reserva-container {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 20px;
   }
-  
-  .reserva-form label {
-    font-weight: bold;
-    color: #444;
+
+  .habitacion-details,
+  .form-container {
+    flex: 1;
+    min-width: 100%;
   }
-  
-  .reserva-form input,
-  .reserva-form textarea {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
+
+  .react-calendar {
+    padding: 15px;
+  }
+
+  .react-calendar__tile {
+    padding: 10px 0;
+    font-size: 0.9rem;
+  }
+
+  .react-calendar__navigation button {
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    padding: 4px 8px;
   }
-  
-  .reserva-form input:focus,
-  .reserva-form textarea:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .react-datepicker-wrapper {
-    width: 100%;
-  }
-  
-  .reserva-btn {
-    padding: 1rem;
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .reserva-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .success-message {
-    text-align: center;
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: #e6ffed;
-    color: #2e7d32;
-    border: 1px solid #a5d6a7;
-    border-radius: 0.5rem;
-  }
-  
+}

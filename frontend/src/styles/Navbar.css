@@ -19,7 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 2rem 3rem;
-    background-color: transparent; /* Fondo inicial transparente */
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo inicial transparente */
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 

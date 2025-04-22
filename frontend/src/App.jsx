@@ -9,6 +9,10 @@ import AdminDashboardPage from './pages/adminDashboardPage';
 import ProtectedRoute from './routes/ProtectedRoute';
 import ReservaPage from './pages/ReservaPage'
 import ReservasAdminPage from './pages/ReservasAdminPage';
+import ContactPage from './pages/ContactPage';
+import GaleriaPage from './pages/GaleriaPage';
+import PreguntasFrecuentesPage from './pages/PreguntasFrecuentesPage';
+import HabitacionesPage from './pages/HabitacionesPage';
 
 const App = () => {
   return (
@@ -18,6 +22,12 @@ const App = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/reservar/:id" element={<ReservaPage />} />
       <Route path="/admin/reservas" element={<ReservasAdminPage />} />
+      <Route path="/contacto" element={<ContactPage />} />
+      <Route path="/galeria" element={<GaleriaPage />} />
+      <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentesPage />} />
+      <Route path="/habitaciones" element={<HabitacionesPage />} />
+
+      {/* Rutas protegidas */}
 
       <Route
         path="/admin"

@@ -72,8 +72,9 @@ const AdminUsersPage = () => {
 
   return (
     <div className="admin-users-page">
-      <button onClick={() => navigate('/')} className="back-button">🏠 Volver al Home</button>
-      <h2>Lista de Usuarios</h2>
+      <button onClick={() => navigate('/admin')} className="back-button"> Volver al panel</button>
+      <h2>Lista de administradores</h2>
+      <button onClick={() => navigate('/register')} className="create-user-button">Crear nuevo administrador</button>
       <table>
         <thead>
           <tr>

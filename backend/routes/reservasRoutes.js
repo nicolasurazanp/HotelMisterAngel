@@ -6,7 +6,12 @@ const Habitacion = require('../models/Habitacion');
 // GET /api/reservas (NUEVA RUTA AÑADIDA)
 router.get('/', async (req, res) => {
   try {
-    const reservas = await Reserva.find().populate('habitacion');
+    const { habitacionId } = req.query;
+
+    const filtro = habitacionId ? { habitacion: habitacionId } : {};
+
+    const reservas = await Reserva.find(filtro).populate('habitacion');
+
     res.json(reservas);
   } catch (error) {
     console.error(error);
@@ -40,6 +45,23 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ mensaje: 'Error al crear la reserva', error });
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const reservaEliminada = await Reserva.findByIdAndDelete(id);
+
+    if (!reservaEliminada) {
+      return res.status(404).json({ mensaje: 'Reserva no encontrada' });
+    }
+
+    res.json({ mensaje: 'Reserva eliminada correctamente' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al eliminar la reserva', error });
   }
 });
 

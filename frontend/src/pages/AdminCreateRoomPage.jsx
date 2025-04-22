@@ -89,6 +89,7 @@ const AdminCreateRoomPage = () => {
   return (
     <div className="admin-create-room-page">
       <h2>Crear nueva habitación</h2>
+      <button onClick={() => navigate('/admin')} className="back-button"> Volver al panel</button>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

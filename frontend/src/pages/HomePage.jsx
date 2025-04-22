@@ -1,4 +1,3 @@
-// src/pages/HomePage.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -10,16 +9,12 @@ import '../styles/HomePage.css';
 
 const HomePage = () => {
   const [habitaciones, setHabitaciones] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
-  const token = localStorage.getItem('token');
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchHabitaciones = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/habitaciones', {
-          headers: { Authorization: token },
-        });
+        const res = await fetch('http://localhost:5000/api/habitaciones');
         if (!res.ok) throw new Error('Error al obtener habitaciones');
         const data = await res.json();
         setHabitaciones(data);
@@ -29,21 +24,11 @@ const HomePage = () => {
       }
     };
     fetchHabitaciones();
-  }, [token]);
-
-  const handleAuthClick = () => {
-    if (isAuthenticated) {
-      localStorage.removeItem('token');
-      setIsAuthenticated(false);
-      navigate('/');
-    } else {
-      navigate('/login');
-    }
-  };
+  }, []);
 
   const settings = {
     dots: true,
-    infinite: false, // Cambié a false para evitar la repetición infinita
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -54,7 +39,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Navbar isAuthenticated={isAuthenticated} onAuthClick={handleAuthClick} />
+      <Navbar /> {/* Ya no es necesario pasar props de autenticación */}
 
       <header className="hero-section">
         <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG90ZWx8ZW58MHx8MHx8fDA%3D" alt="Hotel" className="hero-image" />
@@ -64,7 +49,7 @@ const HomePage = () => {
         </div>
       </header>
 
-      <section className="habitaciones-section">
+      <section className="habitaciones-section" >
         <h2>Habitaciones Disponibles</h2>
         <div className="room-list">
           {habitaciones.length === 0 ? (
@@ -92,15 +77,9 @@ const HomePage = () => {
                 </p>
                 <button
                   className="btn"
-                  onClick={() => {
-                    if (!isAuthenticated) {
-                      navigate('/login');
-                    } else {
-                      navigate(`/reservar/${habitacion._id}`);
-                    }
-                  }}
+                  onClick={() => navigate(`/reservar/${habitacion._id}`)}
                 >
-                  {isAuthenticated ? 'Reservar' : 'Iniciar sesión para reservar'}
+                  Reservar
                 </button>
               </div>
             ))

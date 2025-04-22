@@ -103,7 +103,7 @@ const AdminRoomsPage = () => {
 
   return (
     <div className="admin-rooms-page">
-      <button onClick={() => navigate('/')} className="back-button">🏠 Volver al Home</button>
+      <button onClick={() => navigate('/admin')} className="back-button"> Volver al panel</button>
       <h2>Lista de Habitaciones</h2>
       <button className="create-room-button" onClick={handleCreate}>Crear Nueva Habitación</button>
       <table>
