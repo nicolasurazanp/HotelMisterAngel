@@ -1,0 +1,125 @@
+/* Estilo general de la página de creación */
+.admin-create-room-page {
+  font-family: 'Arial', sans-serif;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+.admin-create-room-page h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #4CAF50;
+  padding-bottom: 10px;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs y textarea */
+input, textarea, select {
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+}
+
+/* Placeholder */
+input::placeholder, textarea::placeholder {
+  color: #bbb;
+}
+
+/* Textarea específico */
+textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+/* Etiquetas */
+div > label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Botones */
+button {
+  padding: 10px 24px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón principal (submit) */
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Botón secundario */
+button[type="button"] {
+  background-color: #2196F3;
+  color: white;
+}
+
+button[type="button"]:hover {
+  background-color: #1976D2;
+  transform: scale(1.05);
+}
+
+/* Espacio extra para segundo botón */
+button + button {
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-create-room-page {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  input, textarea, select, button {
+    font-size: 0.95rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}

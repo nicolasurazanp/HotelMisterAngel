@@ -1,0 +1,76 @@
+/* Estilos generales para la página de contacto */
+.contact-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    padding-bottom: 50px;
+  }
+  
+  .contact-content {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .contact-content h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .contact-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #7f8c8d;
+  }
+  
+  .contact-info p {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0.5rem 0;
+  }
+  
+  .contact-info strong {
+    font-weight: 600;
+    color: #16a085;
+  }
+  
+  .map-container {
+    margin-top: 3rem;
+  }
+  
+  .map-container iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo adicional para los enlaces */
+  .contact-info a {
+    color: #16a085;
+    text-decoration: none;
+  }
+  
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-content {
+      padding: 1.5rem;
+    }
+  
+    .contact-content h1 {
+      font-size: 2rem;
+    }
+  
+    .contact-content p {
+      font-size: 1rem;
+    }
+  }
+  

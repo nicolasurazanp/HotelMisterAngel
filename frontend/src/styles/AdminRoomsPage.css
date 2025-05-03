@@ -1,0 +1,131 @@
+/* Estilo general de la página */
+.admin-rooms-page {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Botón para crear una habitación */
+.create-room-button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.create-room-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: #28a745;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Botones dentro de la tabla */
+button {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin-right: 8px;
+}
+
+/* Botón eliminar */
+button.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.delete:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Botón editar */
+button.edit {
+  background-color: #007bff;
+  color: white;
+}
+
+button.edit:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Celdas vacías */
+td.empty {
+  color: #aaa;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-rooms-page {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .create-room-button {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 12px;
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
