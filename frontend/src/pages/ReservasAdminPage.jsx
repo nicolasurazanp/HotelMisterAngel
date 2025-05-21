@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/ReservasAdminPage.css'; // Asegúrate de tener este archivo CSS
+import '../styles/ReservasAdminPage.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ReservasAdminPage = () => {
   const [reservas, setReservas] = useState([]);
@@ -8,7 +10,7 @@ const ReservasAdminPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user')); // Obtener el objeto completo del usuario desde localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
 
     if (!token || !user || user.rol !== 'admin') {
       navigate('/');
@@ -30,6 +32,7 @@ const ReservasAdminPage = () => {
         setReservas(data);
       } catch (err) {
         console.error(err);
+        toast.error('Error al cargar las reservas');
         setReservas([]);
         navigate('/');
       }
@@ -47,16 +50,21 @@ const ReservasAdminPage = () => {
 
       if (res.ok) {
         setReservas(reservas.filter(r => r._id !== id));
+        toast.success('Reserva eliminada correctamente');
+      } else {
+        toast.error('No se pudo eliminar la reserva');
       }
     } catch (err) {
       console.error(err);
+      toast.error('Error al eliminar la reserva');
     }
   };
 
   return (
     <div className="admin-reservas">
+      <ToastContainer position="top-right" autoClose={3000} />
       <h1>Reservas Registradas</h1>
-      <button onClick={() => navigate('/admin')} className="back-button"> Volver al panel</button>
+      <button onClick={() => navigate('/admin')} className="back-button">Volver al panel</button>
       {reservas.length === 0 ? (
         <p>No hay reservas registradas aún.</p>
       ) : (
@@ -79,11 +87,7 @@ const ReservasAdminPage = () => {
                 <td>{reserva.email}</td>
                 <td>{reserva.cedula}</td>
                 <td>{reserva.celular}</td>
-                <td>
-                  {reserva.fechas.map(f =>
-                    new Date(f).toLocaleDateString()).join(' al ')
-                  }
-                </td>
+                <td>{reserva.fechas.map(f => new Date(f).toLocaleDateString()).join(' al ')}</td>
                 <td>{reserva.habitacion?.nombre || 'N/A'}</td>
                 <td>
                   <button onClick={() => handleEliminar(reserva._id)}>Eliminar</button>

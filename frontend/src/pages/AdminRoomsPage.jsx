@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "../styles/AdminRoomsPage.css";
 
 const AdminRoomsPage = () => {
@@ -23,6 +25,7 @@ const AdminRoomsPage = () => {
         });
 
         if (res.status === 401 || res.status === 403) {
+          toast.error('Acceso no autorizado. Redirigiendo...');
           navigate('/');
           return;
         }
@@ -31,9 +34,11 @@ const AdminRoomsPage = () => {
         if (Array.isArray(data)) {
           setRooms(data);
         } else {
+          toast.warn('Respuesta inesperada del servidor.');
           console.warn('La respuesta no es un array:', data);
         }
       } catch (error) {
+        toast.error('Error al obtener las habitaciones.');
         console.error('Error al obtener las habitaciones:', error);
         navigate('/');
       }
@@ -73,26 +78,33 @@ const AdminRoomsPage = () => {
           room._id === editingRoomId ? { ...room, ...editedRoom } : room
         );
         setRooms(updatedRooms);
+        toast.success('Habitación actualizada correctamente');
       } else {
-        alert('Error al guardar los cambios');
+        toast.error('Error al guardar los cambios');
       }
     } catch (error) {
+      toast.error('Error de red al guardar habitación');
       console.error('Error al guardar habitación:', error);
     }
   };
 
   const handleDelete = async (id) => {
     if (window.confirm('¿Estás seguro de que quieres eliminar esta habitación?')) {
-      const res = await fetch(`http://localhost:5000/api/admin/habitaciones/${id}`, {
-        method: 'DELETE',
-        headers: { Authorization: token },
-      });
+      try {
+        const res = await fetch(`http://localhost:5000/api/admin/habitaciones/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: token },
+        });
 
-      if (res.ok) {
-        setRooms(rooms.filter(room => room._id !== id));
-        alert('Habitación eliminada');
-      } else {
-        alert('Error al eliminar la habitación');
+        if (res.ok) {
+          setRooms(rooms.filter(room => room._id !== id));
+          toast.success('Habitación eliminada exitosamente');
+        } else {
+          toast.error('Error al eliminar la habitación');
+        }
+      } catch (error) {
+        toast.error('Error de red al eliminar habitación');
+        console.error('Error al eliminar habitación:', error);
       }
     }
   };
@@ -171,6 +183,9 @@ const AdminRoomsPage = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Toast Container */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };

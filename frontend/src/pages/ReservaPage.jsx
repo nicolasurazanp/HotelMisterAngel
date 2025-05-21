@@ -25,27 +25,29 @@ const ReservaPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const fetchHabitacion = async () => {
-    try {
-      const res = await fetch(`http://localhost:5000/api/habitaciones/${id}`);
-      const data = await res.json();
-      setHabitacion(data);
-    } catch (err) {
-      console.error('Error cargando habitación:', err);
-    }
-  };
-
-  const fetchReservasExistentes = async () => {
-    try {
-      const res = await fetch(`http://localhost:5000/api/reservas?habitacionId=${id}`);
-      const data = await res.json();
-      setReservasExistentes(data);
-    } catch (err) {
-      console.error('Error cargando reservas:', err);
-    }
-  };
-
   useEffect(() => {
+    const fetchHabitacion = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/habitaciones/${id}`);
+        const data = await res.json();
+        setHabitacion(data);
+      } catch (err) {
+        console.error('Error cargando habitación:', err);
+        toast.error('Error al cargar los datos de la habitación');
+      }
+    };
+
+    const fetchReservasExistentes = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/reservas?habitacionId=${id}`);
+        const data = await res.json();
+        setReservasExistentes(data);
+      } catch (err) {
+        console.error('Error cargando reservas:', err);
+        toast.error('Error al cargar las reservas existentes');
+      }
+    };
+
     fetchHabitacion();
     fetchReservasExistentes();
   }, [id]);
@@ -89,15 +91,11 @@ const ReservaPage = () => {
     e.preventDefault();
 
     if (!verificarFechasDisponibles()) {
-      toast.error(
-        <div>
-          <span>Las fechas seleccionadas ya están ocupadas. Por favor, elige otras fechas.</span>
-        </div>
-      );
+      toast.error('Las fechas seleccionadas ya están ocupadas. Por favor, elige otras fechas.');
       return;
     }
 
-    setIsSubmitting(true); // 🔒 Desactiva el botón
+    setIsSubmitting(true);
 
     try {
       const res = await fetch('http://localhost:5000/api/reservas', {
@@ -114,38 +112,27 @@ const ReservaPage = () => {
 
       if (!res.ok) throw new Error('Error al registrar la reserva');
 
-      toast.success(
-        <div>
-          <span>Reserva registrada exitosamente</span>
-        </div>
-      );
+      toast.success('Reserva registrada exitosamente. Redirigiendo...');
 
       setTimeout(() => {
         navigate('/');
       }, 3000);
     } catch (err) {
       console.error('Error al enviar reserva:', err);
-      toast.error(
-        <div>
-          <span>Ocurrió un error al realizar la reserva</span>
-        </div>
-      );
-      setIsSubmitting(false); // 🔓 Vuelve a activar si hubo error
+      toast.error('Ocurrió un error al realizar la reserva');
+      setIsSubmitting(false);
     }
   };
 
   const tileClassName = ({ date }) => {
-    if (isFechaOcupada(date)) {
-      return 'fecha-ocupada';
-    }
-    return '';
+    return isFechaOcupada(date) ? 'fecha-ocupada' : '';
   };
 
   const isFechaOcupada = (date) => {
     const dateTimestamp = date.getTime();
 
-    return reservasExistentes.some(reserva => {
-      const [startDate, endDate] = reserva.fechas.map(f => new Date(f).getTime());
+    return reservasExistentes.some((reserva) => {
+      const [startDate, endDate] = reserva.fechas.map((f) => new Date(f).getTime());
       return dateTimestamp >= startDate && dateTimestamp <= endDate;
     });
   };
@@ -154,45 +141,44 @@ const ReservaPage = () => {
 
   return (
     <>
-    <Navbar /> 
-    <div className="reserva-page">
-      <div className="reserva-container">
-        <div className="habitacion-details">
-          <h2>Reservar: {habitacion.nombre}</h2>
-          <img src={habitacion.imagenes?.[0]} alt={habitacion.nombre} className="imagen-reserva" />
-          <p className='precio-noche'><strong>PRECIO POR NOCHE:</strong> ${habitacion.precioPorNoche}</p>
-          <p>{habitacion.descripcion}</p>
-          <div className="indicador-fechas-ocupadas">
-            <p><strong>Nota:</strong> Las fechas con fondo rojo están ocupadas y no se pueden seleccionar.</p>
+      <Navbar />
+      <div className="reserva-page">
+        <div className="reserva-container">
+          <div className="habitacion-details">
+            <h2>Reservar: {habitacion.nombre}</h2>
+            <img src={habitacion.imagenes?.[0]} alt={habitacion.nombre} className="imagen-reserva" />
+            <p className="precio-noche"><strong>PRECIO POR NOCHE:</strong> ${habitacion.precioPorNoche}</p>
+            <p>{habitacion.descripcion}</p>
+            <div className="indicador-fechas-ocupadas">
+              <p><strong>Nota:</strong> Las fechas con fondo rojo están ocupadas y no se pueden seleccionar.</p>
+            </div>
+          </div>
+
+          <div className="form-container">
+            <h3 className="titulo-datos">Datos de reserva</h3>
+            <form className="form-reserva" onSubmit={handleSubmit}>
+              <input type="text" name="nombreCompleto" placeholder="Nombre completo" onChange={handleChange} required />
+              <input type="tel" name="celular" placeholder="Número de celular" onChange={handleChange} required />
+              <input type="text" name="cedula" placeholder="Número de cédula" onChange={handleChange} required />
+              <input type="email" name="email" placeholder="Correo electrónico" onChange={handleChange} required />
+
+              <label>Selecciona las fechas:</label>
+              <Calendar
+                onChange={handleFechaChange}
+                selectRange={true}
+                onMouseLeave={() => setHoverDate(null)}
+                tileClassName={tileClassName}
+              />
+
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Reservando...' : 'Realizar reserva'}
+              </button>
+            </form>
           </div>
         </div>
-
-        <div className="form-container">
-          <h3 className='titulo-datos'>Datos de reserva</h3>
-          <form className="form-reserva" onSubmit={handleSubmit}>
-            <input type="text" name="nombreCompleto" placeholder="Nombre completo" onChange={handleChange} required />
-            <input type="tel" name="celular" placeholder="Número de celular" onChange={handleChange} required />
-            <input type="text" name="cedula" placeholder="Número de cédula" onChange={handleChange} required />
-            <input type="email" name="email" placeholder="Correo electrónico" onChange={handleChange} required />
-
-            <label>Selecciona las fechas:</label>
-            <Calendar
-              onChange={handleFechaChange}
-              selectRange={true}
-              onMouseLeave={() => setHoverDate(null)}
-              tileClassName={tileClassName}
-            />
-
-            <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Reservando...' : 'Realizar reserva'}
-            </button>
-            
-          </form>
-        </div>
+        <ToastContainer position="top-right" autoClose={3000} />
       </div>
-      <ToastContainer />
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };

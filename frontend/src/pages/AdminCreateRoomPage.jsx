@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // 👈 Importa useNavigate
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify'; // 👈 Importa toast y contenedor
+import 'react-toastify/dist/ReactToastify.css'; // 👈 Importa estilos
 import "../styles/AdminCreateRoomPage.css";
 
 const AdminCreateRoomPage = () => {
@@ -13,34 +15,34 @@ const AdminCreateRoomPage = () => {
   });
 
   const token = localStorage.getItem('token');
-  const navigate = useNavigate(); // 👈 Hook para redirigir
+  const navigate = useNavigate();
 
-  // Verificación del token al cargar la página
   useEffect(() => {
     const verifyToken = async () => {
-        try {
-          if (!token) {
-            navigate('/'); // Redirige si no hay token
-            return;
-          }
-    
-          const res = await fetch('http://localhost:5000/api/admin/users', {
-            headers: { Authorization: token },
-          });
-    
-          if (res.status === 401 || res.status === 403) {
-            navigate('/'); // Redirige si el token no es válido
-            return;
-          }
-    
-        } catch (error) {
-          console.error('Error al verificar token:', error);
-          navigate('/'); // Redirige si hay error al verificar el token
+      try {
+        if (!token) {
+          navigate('/');
+          return;
         }
-      };
-    
-      verifyToken();
-    }, [token, navigate]);
+
+        const res = await fetch('http://localhost:5000/api/admin/users', {
+          headers: { Authorization: token },
+        });
+
+        if (res.status === 401 || res.status === 403) {
+          navigate('/');
+          return;
+        }
+
+      } catch (error) {
+        console.error('Error al verificar token:', error);
+        toast.error('Error al verificar el token'); // 👈 Toast en error de token
+        navigate('/');
+      }
+    };
+
+    verifyToken();
+  }, [token, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -63,13 +65,13 @@ const AdminCreateRoomPage = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token, // 👈 Enviar token con prefijo Bearer
+        Authorization: token,
       },
       body: JSON.stringify(roomData),
     });
 
     if (res.ok) {
-      alert('Habitación creada correctamente');
+      toast.success('Habitación creada correctamente'); // 👈 Toast de éxito
       setRoomData({
         nombre: '',
         descripcion: '',
@@ -78,18 +80,18 @@ const AdminCreateRoomPage = () => {
         disponibilidad: true,
         capacidad: '',
       });
-
-      // Redirigir a la página de habitaciones después de crear una
-      navigate('/admin/habitaciones'); // 👈 Redirigir aquí
+      navigate('/admin/habitaciones');
     } else {
-      alert('Error al crear la habitación');
+      toast.error('Error al crear la habitación'); // 👈 Toast de error
     }
   };
 
   return (
     <div className="admin-create-room-page">
       <h2>Crear nueva habitación</h2>
-      <button onClick={() => navigate('/admin')} className="back-button"> Volver al panel</button>
+      <button onClick={() => navigate('/admin')} className="back-button">
+        Volver al panel
+      </button>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -134,7 +136,9 @@ const AdminCreateRoomPage = () => {
               required
             />
           ))}
-          <button type="button" onClick={addImageField}>Agregar otra imagen</button>
+          <button type="button" onClick={addImageField}>
+            Agregar otra imagen
+          </button>
         </div>
         <div>
           <label>
@@ -151,6 +155,9 @@ const AdminCreateRoomPage = () => {
         </div>
         <button type="submit">Crear Habitación</button>
       </form>
+
+      {/* 👇 Contenedor de Toasts */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify'; // 👈 Importa toast y su contenedor
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/Register.css';
 
 const Register = () => {
@@ -9,7 +11,6 @@ const Register = () => {
     email: '',
     password: '',
   });
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -34,13 +35,16 @@ const Register = () => {
 
       const result = await res.json();
       if (res.ok) {
-        navigate('/login'); // Redirigir al login después del registro
+        toast.success('Registro exitoso. Redirigiendo a login...');
+        setTimeout(() => {
+          navigate('/login'); // Redirigir al login después del registro
+        }, 2000);
       } else {
-        setError(result.msg); // Mostrar error si ocurre
+        toast.error(result.msg);
       }
     } catch (err) {
       console.error(err);
-      setError('Hubo un error, intenta nuevamente.');
+      toast.error('Hubo un error, intenta nuevamente.');
     }
   };
 
@@ -49,7 +53,6 @@ const Register = () => {
       <div className="login-background" />
       <div className="auth-container">
         <h2>Registro</h2>
-        {error && <p className="error-message">{error}</p>}
         <form className="auth-form" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -84,9 +87,12 @@ const Register = () => {
             onChange={handleChange}
           />
           <button type="submit">Registrarse</button>
-          <p>¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link></p>
+          <p>
+            ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
+          </p>
         </form>
       </div>
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 };

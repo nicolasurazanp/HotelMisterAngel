@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/AdminUsersPage.css';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminUsersPage = () => {
   const [users, setUsers] = useState([]);
   const [editingUserId, setEditingUserId] = useState(null);
   const [editedUser, setEditedUser] = useState({ nombre: '', telefono: '', email: '', rol: '' });
   const navigate = useNavigate();
-
   const token = localStorage.getItem('token');
 
   const fetchUsers = async () => {
@@ -17,7 +18,7 @@ const AdminUsersPage = () => {
       });
 
       if (res.status === 401 || res.status === 403) {
-        // Token inválido o sin permisos
+        toast.error('Acceso no autorizado');
         navigate('/');
         return;
       }
@@ -26,9 +27,11 @@ const AdminUsersPage = () => {
       if (Array.isArray(data)) {
         setUsers(data);
       } else {
+        toast.warn('Respuesta inesperada del servidor');
         console.warn('La respuesta no es un array:', data);
       }
     } catch (error) {
+      toast.error('Error al obtener los usuarios');
       console.error('Error al obtener usuarios:', error);
       navigate('/');
     }
@@ -41,25 +44,47 @@ const AdminUsersPage = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm('¿Estás seguro que quieres eliminar este usuario?')) {
-      await fetch(`http://localhost:5000/api/admin/users/${id}`, {
-        method: 'DELETE',
-        headers: { Authorization: token },
-      });
-      fetchUsers();
+      try {
+        const res = await fetch(`http://localhost:5000/api/admin/users/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: token },
+        });
+
+        if (res.ok) {
+          toast.success('Usuario eliminado correctamente');
+          fetchUsers();
+        } else {
+          toast.error('Error al eliminar el usuario');
+        }
+      } catch (error) {
+        toast.error('Error de red al eliminar usuario');
+        console.error('Error al eliminar usuario:', error);
+      }
     }
   };
 
   const handleSave = async () => {
-    await fetch(`http://localhost:5000/api/admin/users/${editingUserId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token,
-      },
-      body: JSON.stringify(editedUser),
-    });
-    setEditingUserId(null);
-    fetchUsers();
+    try {
+      const res = await fetch(`http://localhost:5000/api/admin/users/${editingUserId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token,
+        },
+        body: JSON.stringify(editedUser),
+      });
+
+      if (res.ok) {
+        toast.success('Usuario actualizado correctamente');
+        setEditingUserId(null);
+        fetchUsers();
+      } else {
+        toast.error('Error al guardar los cambios');
+      }
+    } catch (error) {
+      toast.error('Error de red al actualizar usuario');
+      console.error('Error al guardar usuario:', error);
+    }
   };
 
   const handleCancel = () => {
@@ -72,9 +97,10 @@ const AdminUsersPage = () => {
 
   return (
     <div className="admin-users-page">
-      <button onClick={() => navigate('/admin')} className="back-button"> Volver al panel</button>
+      <button onClick={() => navigate('/admin')} className="back-button">Volver al panel</button>
       <h2>Lista de administradores</h2>
       <button onClick={() => navigate('/register')} className="create-user-button">Crear nuevo administrador</button>
+
       <table>
         <thead>
           <tr>
@@ -120,6 +146,9 @@ const AdminUsersPage = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Toast notifications */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };
