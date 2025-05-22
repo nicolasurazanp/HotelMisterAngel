@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // 👈 Importa useNavigate
+import { useNavigate } from 'react-router-dom';
 import "../styles/AdminCreateRoomPage.css";
 
 const AdminCreateRoomPage = () => {
@@ -13,14 +13,14 @@ const AdminCreateRoomPage = () => {
   });
 
   const token = localStorage.getItem('token');
-  const navigate = useNavigate(); // 👈 Hook para redirigir
+  const navigate = useNavigate(); 
 
-  // Verificación del token al cargar la página
+  
   useEffect(() => {
     const verifyToken = async () => {
         try {
           if (!token) {
-            navigate('/'); // Redirige si no hay token
+            navigate('/');
             return;
           }
     
@@ -29,13 +29,13 @@ const AdminCreateRoomPage = () => {
           });
     
           if (res.status === 401 || res.status === 403) {
-            navigate('/'); // Redirige si el token no es válido
+            navigate('/'); 
             return;
           }
     
         } catch (error) {
           console.error('Error al verificar token:', error);
-          navigate('/'); // Redirige si hay error al verificar el token
+          navigate('/'); 
         }
       };
     
@@ -63,11 +63,11 @@ const AdminCreateRoomPage = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token, // 👈 Enviar token con prefijo Bearer
+        Authorization: token, 
       },
       body: JSON.stringify(roomData),
     });
-
+    
     if (res.ok) {
       alert('Habitación creada correctamente');
       setRoomData({
@@ -79,8 +79,7 @@ const AdminCreateRoomPage = () => {
         capacidad: '',
       });
 
-      // Redirigir a la página de habitaciones después de crear una
-      navigate('/admin/habitaciones'); // 👈 Redirigir aquí
+      navigate('/admin/habitaciones'); 
     } else {
       alert('Error al crear la habitación');
     }

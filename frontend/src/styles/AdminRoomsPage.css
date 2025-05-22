@@ -1,4 +1,4 @@
-/* Estilo general de la página */
+
 .admin-rooms-page {
   font-family: Arial, sans-serif;
   max-width: 1200px;
@@ -12,7 +12,6 @@
   align-items: center;
 }
 
-/* Botón para crear una habitación */
 .create-room-button {
   background-color: #28a745;
   color: #fff;
@@ -32,7 +31,6 @@
   transform: scale(1.05);
 }
 
-/* Tabla */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -62,7 +60,6 @@ tr:hover {
   background-color: #f8f9fa;
 }
 
-/* Botones dentro de la tabla */
 button {
   padding: 8px 14px;
   font-size: 14px;
@@ -75,7 +72,6 @@ button {
   margin-right: 8px;
 }
 
-/* Botón eliminar */
 button.delete {
   background-color: #dc3545;
   color: white;
@@ -86,7 +82,6 @@ button.delete:hover {
   transform: scale(1.05);
 }
 
-/* Botón editar */
 button.edit {
   background-color: #007bff;
   color: white;
@@ -97,14 +92,12 @@ button.edit:hover {
   transform: scale(1.05);
 }
 
-/* Celdas vacías */
 td.empty {
   color: #aaa;
   font-style: italic;
   text-align: center;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .admin-rooms-page {
     margin: 20px;

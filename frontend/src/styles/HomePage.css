@@ -1,4 +1,3 @@
-/* Hero section */
 .hero-section {
   position: relative;
   width: 100vw;
@@ -22,8 +21,8 @@
   left: 5%;
   color: white;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad */
-  padding: 1rem; /* Espaciado interno para separar el texto del borde */
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 1rem; 
 }
 
 .hero-text h1 {
@@ -35,7 +34,6 @@
   font-size: 1.5rem;
 }
 
-/* Habitaciones section */
 .habitaciones-section {
   padding: 6rem 2rem;
   text-align: center;
@@ -79,7 +77,6 @@
   display: block;
 }
 
-/* Fix slick layout to center each image properly */
 .slick-slide {
   display: flex !important;
   justify-content: center;
@@ -93,7 +90,6 @@
   width: 100%;
 }
 
-/* Available / unavailable text */
 .disponible {
   color: green;
   font-weight: bold;
@@ -104,7 +100,7 @@
   font-weight: bold;
 }
 
-/* Button styling */
+
 .btn {
   margin-top: 1rem;
   background-color: #333;
@@ -120,7 +116,7 @@
   background-color: #555;
 }
 
-/* General fix to avoid scroll */
+
 html, body {
   overflow-x: hidden;
   width: 100%;

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import '../styles/Footer.css';
 import { FaX } from 'react-icons/fa6';
-import { Link } from 'react-router-dom'; // Agrega esto
+import { Link } from 'react-router-dom';
 
 const Footer = () => (
   <footer className="footer">

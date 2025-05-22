@@ -1,4 +1,4 @@
-/* Estilos generales para la página de contacto */
+
 .contact-page {
     font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
@@ -50,7 +50,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
-  /* Estilo adicional para los enlaces */
   .contact-info a {
     color: #16a085;
     text-decoration: none;

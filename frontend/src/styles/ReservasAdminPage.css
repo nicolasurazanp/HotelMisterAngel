@@ -1,140 +1,125 @@
-/* Estilo general de la página de administración de reservas */
 .admin-reservas {
-    font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.admin-reservas h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  border-bottom: 3px solid #28a745;
+  padding-bottom: 10px;
+  margin-bottom: 2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th {
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  text-align: center;
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button {
+  padding: 0.6rem 1.3rem;
+  background-color: #d22;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #a00;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #8c0000;
+  transform: scale(0.98);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+td.empty {
+  color: #bbb;
+  font-style: italic;
+}
+
+td {
+  padding: 12px;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+@media (max-width: 768px) {
+  .admin-reservas {
+    margin: 20px;
+    padding: 20px;
   }
-  
-  /* Título de la sección */
-  .admin-reservas h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-    border-bottom: 3px solid #28a745;
-    padding-bottom: 10px;
-    margin-bottom: 2rem;
-  }
-  
-  /* Estilo de la tabla */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  /* Encabezados de las columnas */
-  th {
-    padding: 12px;
-    background-color: #28a745;
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border: none;
-    text-align: center;
-  }
-  
-  /* Celdas de la tabla */
+
   th, td {
-    padding: 16px;
-    text-align: left;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #333;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  
-  /* Efecto hover en las filas de la tabla */
-  tr:hover {
-    background-color: #f9f9f9;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Estilo de los botones */
-  button {
-    padding: 0.6rem 1.3rem;
-    background-color: #d22;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-block;
-    margin-top: 0.5rem;
-    text-align: center;
-  }
-  
-  /* Efecto hover y animación de los botones */
-  button:hover {
-    background-color: #a00;
-    transform: scale(1.05); /* Efecto de escala */
-  }
-  
-  /* Cambio de color al hacer clic en el botón */
-  button:active {
-    background-color: #8c0000;
-    transform: scale(0.98);
-  }
-  
-  /* Añadir borde cuando el botón está en foco */
-  button:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
-  }
-  
-  /* Estilo general de la fila cuando los datos están vacíos o son nulos */
-  td.empty {
-    color: #bbb;
-    font-style: italic;
-  }
-  
-  /* Estilo de las filas de la tabla */
-  td {
     padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  button {
+    padding: 6px 12px;
     font-size: 1rem;
-    color: #666;
-    font-weight: 500;
   }
-  
-  /* Estilo general de la tabla de datos */
-  table tr:nth-child(even) {
-    background-color: #fafafa;
-  }
-  
-  /* Responsive para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .admin-reservas {
-      margin: 20px;
-      padding: 20px;
-    }
-  
-    th, td {
-      padding: 12px;
-      font-size: 0.95rem;
-    }
-  
-    button {
-      padding: 6px 12px;
-      font-size: 1rem;
-    }
-  }
-  
+}

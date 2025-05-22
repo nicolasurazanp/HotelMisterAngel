@@ -12,7 +12,7 @@ const AdminDashboardPage = () => {
     if (!user || user.rol !== 'admin') {
       navigate('/');
     } else {
-      setNombreAdmin(user.nombre); // Guardar el nombre del usuario logueado
+      setNombreAdmin(user.nombre);
     }
   }, [navigate]);
 

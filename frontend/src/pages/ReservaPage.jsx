@@ -97,7 +97,7 @@ const ReservaPage = () => {
       return;
     }
 
-    setIsSubmitting(true); // 🔒 Desactiva el botón
+    setIsSubmitting(true);
 
     try {
       const res = await fetch('http://localhost:5000/api/reservas', {
@@ -130,7 +130,7 @@ const ReservaPage = () => {
           <span>Ocurrió un error al realizar la reserva</span>
         </div>
       );
-      setIsSubmitting(false); // 🔓 Vuelve a activar si hubo error
+      setIsSubmitting(false);
     }
   };
 

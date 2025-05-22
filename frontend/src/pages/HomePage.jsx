@@ -39,7 +39,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Navbar /> {/* Ya no es necesario pasar props de autenticación */}
+      <Navbar /> 
 
       <header className="hero-section">
         <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG90ZWx8ZW58MHx8MHx8fDA%3D" alt="Hotel" className="hero-image" />
@@ -86,7 +86,6 @@ const HomePage = () => {
           )}
         </div>
       </section>
-
       <Footer />
     </>
   );

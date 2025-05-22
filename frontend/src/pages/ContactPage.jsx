@@ -5,9 +5,8 @@ import '../styles/ContactPage.css';
 
 const ContactPage = () => {
   useEffect(() => {
-    // Mueve el scroll a la parte superior al cargar la página
     window.scrollTo(0, 100); 
-  }, []); // Se ejecuta solo una vez, cuando el componente se monta
+  }, []);
 
   return (
     <>
@@ -16,13 +15,11 @@ const ContactPage = () => {
         <div className="contact-content">
           <h1>Contáctanos</h1>
           <p>Estamos aquí para ayudarte. Puedes visitarnos o comunicarte a través de los siguientes medios:</p>
-
           <div className="contact-info">
             <p><strong>Dirección:</strong> Calle 123, Rivera, Huila</p>
             <p><strong>Teléfono:</strong> +57 300 123 4567</p>
             <p><strong>Email:</strong> contacto@hotelrivera.com</p>
           </div>
-
           <div className="map-container">
             <iframe
               title="Ubicación Hotel Mister Angel"

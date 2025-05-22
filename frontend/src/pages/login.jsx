@@ -34,12 +34,9 @@ const Login = () => {
       const result = await res.json();
 
       if (res.ok) {
-        // Guardar token y usuario (con rol) en localStorage
         localStorage.setItem('token', result.token);
         localStorage.setItem('user', JSON.stringify(result.user));
-        navigate('/'); // Redirigir a home
-        // Redirigir a home o a una vista especial si es admin
-        
+        navigate('/'); 
       } else {
         setError(result.msg);
       }

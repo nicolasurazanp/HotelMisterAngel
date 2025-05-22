@@ -46,7 +46,6 @@
   font-weight: 600;
 }
 
-
 .form-container {
   flex: 1;
   min-width: 350px;
@@ -113,7 +112,7 @@
   padding: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s ease;
-  flex-grow: 1; /* Esto permite que el calendario ocupe más espacio */
+  flex-grow: 1;
 }
 
 .react-calendar:hover {
@@ -193,16 +192,16 @@
 .react-calendar__tile--occupied {
   background: #f44336 !important;
   color: white !important;
-  pointer-events: none; /* Deshabilita la selección de las fechas ocupadas */
+  pointer-events: none;
   opacity: 0.6;
 }
+
 .fecha-ocupada {
   background-color: #f44336 !important;
   color: white !important;
-  pointer-events: none; /* Deshabilita la selección de las fechas ocupadas */
-  opacity: 0.6; /* Hace que las fechas ocupadas se vean atenuadas */
+  pointer-events: none;
+  opacity: 0.6;
 }
-
 
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #bbb;
@@ -212,7 +211,6 @@
   cursor: default;
   border-radius: 12px;
 }
-
 
 .react-calendar__month-view__days__day:not(.react-calendar__month-view__days__day--neighboringMonth) {
   color: #2c3e50;

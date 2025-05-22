@@ -7,11 +7,10 @@ const { crearHabitacion, obtenerHabitaciones, eliminarHabitacion, actualizarHabi
 router.get('/users', verifyToken, isAdmin, getAllUsers);
 router.put('/users/:id', verifyToken, isAdmin, updateUser);
 router.delete('/users/:id', verifyToken, isAdmin, deleteUser);
-
-router.get('/habitaciones', verifyToken, isAdmin, obtenerHabitaciones); // Obtener todas las habitaciones
-router.post('/habitaciones', verifyToken, isAdmin, crearHabitacion); // Crear una nueva habitación
-router.delete('/habitaciones/:id', verifyToken, isAdmin, eliminarHabitacion); // Eliminar una habitación
-router.put('/habitaciones/:id', verifyToken, isAdmin, actualizarHabitacion); // Actualizar una habitación
+router.get('/habitaciones', verifyToken, isAdmin, obtenerHabitaciones); 
+router.post('/habitaciones', verifyToken, isAdmin, crearHabitacion); 
+router.delete('/habitaciones/:id', verifyToken, isAdmin, eliminarHabitacion); 
+router.put('/habitaciones/:id', verifyToken, isAdmin, actualizarHabitacion); 
 
 
 module.exports = router;

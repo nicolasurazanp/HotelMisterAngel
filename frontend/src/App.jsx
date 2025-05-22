@@ -27,8 +27,6 @@ const App = () => {
       <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentesPage />} />
       <Route path="/habitaciones" element={<HabitacionesPage />} />
 
-      {/* Rutas protegidas */}
-
       <Route
         path="/admin"
         element={

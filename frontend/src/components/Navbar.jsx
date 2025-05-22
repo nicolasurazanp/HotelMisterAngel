@@ -6,7 +6,6 @@ import "semantic-ui-css/semantic.min.css";
 const Navbar = ({ onAuthClick }) => {
   const navigate = useNavigate();
 
-  // Obtener usuario desde localStorage
   const user = JSON.parse(localStorage.getItem('user'));
   const isAuthenticated = !!user;
   const isAdmin = user?.rol === 'admin';
@@ -30,7 +29,6 @@ const Navbar = ({ onAuthClick }) => {
         <li onClick={() => navigate('/contacto')}>Contacto</li>
         <li onClick={() => navigate('/galeria')}>Nuestros Espacios</li>
 
-        {/* Secciones visibles solo si el usuario es admin */}
         {isAuthenticated && isAdmin && (
           <>
             <li onClick={() => navigate('/admin')}>Panel administracion</li>

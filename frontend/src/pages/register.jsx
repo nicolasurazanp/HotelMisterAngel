@@ -34,9 +34,9 @@ const Register = () => {
 
       const result = await res.json();
       if (res.ok) {
-        navigate('/login'); // Redirigir al login después del registro
+        navigate('/login'); 
       } else {
-        setError(result.msg); // Mostrar error si ocurre
+        setError(result.msg); 
       }
     } catch (err) {
       console.error(err);

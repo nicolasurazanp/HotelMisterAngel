@@ -3,7 +3,6 @@ const router = express.Router();
 const Reserva = require('../models/Reserva');
 const Habitacion = require('../models/Habitacion');
 
-// GET /api/reservas (NUEVA RUTA AÑADIDA)
 router.get('/', async (req, res) => {
   try {
     const { habitacionId } = req.query;
@@ -19,7 +18,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST /api/reservas (EXISTENTE)
 router.post('/', async (req, res) => {
   try {
     const { nombreCompleto, celular, cedula, email, fechas, habitacionId } = req.body;

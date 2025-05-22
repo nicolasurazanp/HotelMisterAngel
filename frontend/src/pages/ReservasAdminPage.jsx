@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/ReservasAdminPage.css'; // Asegúrate de tener este archivo CSS
+import '../styles/ReservasAdminPage.css'; 
 
 const ReservasAdminPage = () => {
   const [reservas, setReservas] = useState([]);
@@ -8,7 +8,7 @@ const ReservasAdminPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user')); // Obtener el objeto completo del usuario desde localStorage
+    const user = JSON.parse(localStorage.getItem('user')); 
 
     if (!token || !user || user.rol !== 'admin') {
       navigate('/');
